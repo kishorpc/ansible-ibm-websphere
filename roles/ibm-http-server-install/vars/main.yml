@@ -1,5 +1,5 @@
 ---
-__repository_url:       "{{ ihs_repository_url }}"
+__repository_url:       https://www.ibm.com/software/repositorymanager/com.ibm.websphere.IHS.v90
 __tmp_dir:              "{{ tmp_dir | default('/opt/IBM/Binaries') }}/wassup"
 __logs_dir:             "{{ tmp_dir | default('/opt/IBM/Binaries') }}/logs"
 __iim_install_location: "{{ iim_install_location  | default('/opt/IBM/InstallationManager') }}"

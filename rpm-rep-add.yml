@@ -1,0 +1,32 @@
+---
+- name: nodejs installation
+  hosts: aws-instance
+  gather_facts: yes
+  become: yes
+  vars:
+     nodejs_repo_rpm_key: https://rpm.nodesource.com/pub/el/NODESOURCE-GPG-SIGNING-KEY-EL
+     nodejs_major_version_fact: 16
+  tasks:
+    - block:
+        - name: Add RPM repository
+          ansible.builtin.yum_repository:
+            file: external_repos_rpm
+            name: nodesource
+            description: Node.js Packages for Fedora Linux {{ ansible_distribution_major_version }} - $basearch
+            baseurl: 'https://rpm.nodesource.com/pub_{{ nodejs_major_version_fact }}.x/el/{{ ansible_distribution_major_version }}/$basearch'
+            gpgkey: '{{ nodejs_repo_rpm_key }}'
+            failovermethod: priority
+            enabled: yes
+            gpgcheck: yes
+            state: present
+        - name: Install NodeJS for RHEL
+          yum:
+            name: nodejs-16.16.0
+            # - '@nodejs:{{ nodejs_major_version_fact }}'
+            state: present
+        - name: node version
+          shell:
+            cmd: node --version
+      when:
+        - ansible_os_family == 'RedHat'
+ 

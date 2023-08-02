@@ -5,16 +5,16 @@
 - name:          Create Logs directory
   file:          path={{ __logs_dir }} state=directory mode=0755
 
-- name:          Download IBM Installation Manager
-  get_url:
-    url:         "{{ iim_repository_url }}/{{ __bin_file }}"
-    dest:        "{{ __tmp_dir }}/{{ __bin_file }}"
-    mode:        0755
-    checksum:    sha256:{{ __bin_file_sha256 }}
+  #- name:          Download IBM Installation Manager
+  # get_url:
+  # url:         "{{ iim_repository_url }}/{{ __bin_file }}"
+  # dest:        "{{ __tmp_dir }}/{{ __bin_file }}"
+  # mode:        0755
+  # checksum:    sha256:{{ __bin_file_sha256 }}
 
 - name:          Extract IBM Installation Manager
   unarchive:
-    src:         "{{ __tmp_dir }}/{{ __bin_file }}"
+    src:         "/root/ibm-sportz/ansible-ibm-websphere/agent.installer.linux.gtk.x86_64_1.9.2004.20230323_1254.zip"
     dest:        "{{ __tmp_dir }}/"
     copy:        no
 

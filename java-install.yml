@@ -1,0 +1,13 @@
+---
+ - name: jdk install
+   hosts: localhost
+   gather_facts: false
+   become: true
+   vars:
+      ansible_connection: local
+      version: "openjdk-8-jdk"
+   tasks:
+    - name: openjdk 8 install
+      apt:
+        name: openjdk-11-jdk
+        state: present

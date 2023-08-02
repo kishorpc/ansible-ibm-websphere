@@ -3,7 +3,7 @@
 # Variables used in this playbook that can be setup at hosts file.
 ---
 - name:                     Install IBM HTTP Server - Plugin - WCT
-  hosts:                    ihs_servers
+  hosts:                    172.21.182.162
   become:                   true
   vars:
     __repository_url:       "{{ ihs_repository_url }}"
@@ -19,4 +19,4 @@
     #  - { file_name: WAS_V8.5.5_SUPPL_3_OF_3.zip, check_sum: 94e3d9b70b139ad5fa0578da6857b295c5d2370c1b6ecb544c1e5757406fec90 }
     #__this_version:         "8.5.5000.20130514_1044"
   roles:
-    - ibm-http-server-install
+  - roles/ibm-http-server-install

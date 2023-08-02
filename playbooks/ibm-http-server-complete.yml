@@ -3,16 +3,11 @@
 # Variables used in this playbook that can be setup at hosts file.
 ---
 - name:                     Install IBM HTTP Server - Plugin - WCT
-  hosts:                    ihs_servers
+  hosts:                    localhost
+  connection: local
   become:                   true
   roles:
     - roles/installation-manager-install
     - roles/ibm-http-server-install
-    - roles/ibm-http-server-fix-install
+      # - roles/ibm-http-server-fix-install
     - roles/ibm-http-config-plgwct
-
-- name:                     Install IBM HTTP Server - Plugin - WCT
-  hosts:                    dmgr
-  become:                   true
-  roles:
-    - roles/was-dmgr-config-webserver
